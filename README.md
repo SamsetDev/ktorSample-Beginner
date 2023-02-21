@@ -26,6 +26,16 @@ Step-8: <h3>Project Structure Understanding</h3>
 
 <h4>application.conf</h4> is the configuration file for our EngineMain which is from Netty in our case. We define the server configuration parameters in this file. The key point to note in this file is the modules we set for our application which becomes the entry point(s) for our engine to look into and set up the application from. We set the ApplicationKt.module as our main entry point.
 
+Note: application.conf file call to Application.module and Application.module call to main method. But you can remove application.conf file and direct define your server port in main function in application file. look
+
+```
+fun main() {
+embaddedServer(Netty,port=8080, host="0.0.0.0"){
+
+}.start();
+}
+```
+
 <h4>Application.kt</h4> is the main class which our server gets the entry from.
 The main function of the Application class passes the controls to EngineMain.main function so as to let Netty engine set up the rest for us.
 
